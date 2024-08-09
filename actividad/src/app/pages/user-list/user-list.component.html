@@ -1,1 +1,9 @@
-<p>user-list works!</p>
+<section class="container">
+  <div class="row row-gap-sm-1">
+    @for (user of listausuarios; track user.id) {
+    <article class="col-pro">
+      <app-userview [myuser]="user" />
+    </article>
+    }
+  </div>
+</section>
