@@ -16,20 +16,6 @@ import { UserviewComponent } from './pages/userview/userview.component';
 })
 export class AppComponent {
 
-    userServices = inject(UsuariosService);
-    arruser: User[] = []
-
-    async ngOnInit(){
-      try{
-        const respuesta = await firstValueFrom(this.userServices.getAll())
-    
-        this.arruser = respuesta.results
-        console.log(this.arruser)
-        }
-        catch(error)
-        {
-          console.log(error)
-        }  
-    }
+   
 
 }
