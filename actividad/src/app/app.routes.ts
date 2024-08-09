@@ -6,15 +6,17 @@ import { FormComponent } from './pages/form/form.component';
 
 export const routes: Routes = [
 
-    {path:"", pathMatch:"full",redirectTo:"home"},
-    {path:"home",component:UserListComponent},
-    {path:"control-panel",component:ControlPanelComponent , children: [
+    /* {path:"", pathMatch:"full",redirectTo:"home"},
+    {path:"home",component:UserListComponent}, */
+    {path:'home', component: UserListComponent},
+    {path: "user", component: UserviewComponent},
+    /* {path:"control-panel",component:ControlPanelComponent , children: [
         {path:"",pathMatch: 'full',redirectTo: 'home'},
         {path:"empleado/:id",component:UserviewComponent},
         {path:"home", component:UserListComponent},
         {path:"nuevo-empleado", component:FormComponent},
         {path:"actualizar-empleado/:id", component:FormComponent}
-    ]},
+    ]}, */
     
-    {path:"**",redirectTo:"home"}
+    //{path:"**",redirectTo:"home"}
 ];
