@@ -1,8 +1,8 @@
 <main>
   <section class="container">
-    <div class="row row-gap-sm-1">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 row-gap-1">
       @for (user of arruser; track user.id) {
-      <article class="col-pro">
+      <article class="col">
         <app-userview [myuser]="user" />
       </article>
       }
