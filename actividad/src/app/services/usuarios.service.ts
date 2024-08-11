@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { Objeto, User } from '../interfaces/objeto.interface';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { firstValueFrom, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +19,11 @@ export class UsuariosService {
   getAll():Observable<Objeto>{
     return this.http.get<Objeto>(this.baseurl)
   }
+  
+  /* getById(id:string): Observable<User[]>{
 
-
+    return firstValueFrom
+    (this.http.get<User[]>(`${this.baseurl}${id}`))
+  
+  } */
 }
