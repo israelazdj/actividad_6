@@ -1,5 +1,5 @@
 import { Component, inject, Input } from '@angular/core';
-import { User } from '../../interfaces/objeto.interface';
+import { Objeto, User } from '../../interfaces/objeto.interface';
 import { UserviewComponent } from "../userview/userview.component";
 import { RouterLink } from '@angular/router';
 import { UsuariosService } from '../../services/usuarios.service';
@@ -20,7 +20,31 @@ export class UserListComponent {
 
   async ngOnInit(){
     try{
-      const respuesta = await firstValueFrom(this.userServices.getAll())
+      //observable devuelve los usuarios
+     this.userServices.getAll().subscribe((data: Objeto)=>{
+      this.arruser = data.results
+      console.log(this.arruser)
+    })
+      /* const respuesta = await firstValueFrom(this.userServices.getAll())
+  
+      this.arruser = respuesta.results
+      console.log(this.arruser)*/
+      } 
+      catch(error)
+      {
+        console.log(error)
+      }  
+  }
+
+
+  /* async ngOnInit(){ */
+    //observable revuelve los usuarios
+    /* this.userServices.getAlll().subscribe((data: Objeto)=>{
+      this.arruser = data.results
+      console.log(this.arruser)
+    }) */
+   /*  try{
+      const respuesta = await this.userServices.getAll()
   
       this.arruser = respuesta.results
       console.log(this.arruser)
@@ -28,6 +52,6 @@ export class UserListComponent {
       catch(error)
       {
         console.log(error)
-      }  
-  }
+      }   */
+  
 }
