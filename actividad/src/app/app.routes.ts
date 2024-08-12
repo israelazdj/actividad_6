@@ -13,7 +13,7 @@ export const routes: Routes = [
     {path: "user", component: UserviewComponent}, */
     {path:"control-panel",component:ControlPanelComponent , children: [
         {path:"",pathMatch: 'full',redirectTo: 'home'},
-        {path:"usuario/:id",component:CardUserComponent},
+        {path:"users/:id",component:CardUserComponent},
         {path:"home", component:UserListComponent},
         {path:"new", component:FormComponent},
         {path:"actualizar-usuario/:id", component:FormComponent}

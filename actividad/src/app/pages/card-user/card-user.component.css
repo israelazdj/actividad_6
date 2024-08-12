@@ -1,0 +1,8 @@
+.col-custom{
+    @media(max-width:762px){
+        border: none !important;
+        padding-left: 0;
+        padding-right: 0;
+        
+    }
+}
