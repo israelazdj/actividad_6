@@ -47,5 +47,9 @@ export class UsuariosService {
     return this.http.post<User>(this.baseurl,body)
   }
 
+  delete(id:string): Observable<User>{
+    return this.http.delete<User>(`${this.baseurl}${id}`)
+    
+  }
 
 }
