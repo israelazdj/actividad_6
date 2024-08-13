@@ -1,6 +1,6 @@
 <section class="container mt-3">
   <div class="card shadow p-5">
-    <h3>Actualizar Usuario</h3>
+    <h3>{{ variable }} Usuario</h3>
 
     <form [formGroup]="usuarioform" (ngSubmit)="getDataForm()">
       <div class="my-3">
@@ -71,10 +71,16 @@
         <p class="text-danger">El Url es obligatorio</p>
         }
       </div>
-      <button type="submit" class="btn btn-info border-0 align-items-center">
+      <div class="my-3">
+        <input type="submit" [value]="variable" class="btn btn-danger" />
+      </div>
+      <!-- <button type="submit" class="btn btn-info border-0 align-items-center">
         <i class="fa-duotone fa-solid fa-floppy-disk"></i>
-        <small class="fs-18"> Actualizar</small>
-      </button>
+        <small class="fs-18"> {{ variable }}</small>
+      </button> -->
     </form>
+    @for( error of errorform; track $index ){
+    <p class="text-danger">{{ error.field }}: {{ error.message }}</p>
+    }
   </div>
 </section>

@@ -36,6 +36,8 @@ export class UserListComponent {
       }  
   }
 
+  delete(){}
+
 
   /* async ngOnInit(){ */
     //observable revuelve los usuarios
