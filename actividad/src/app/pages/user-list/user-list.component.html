@@ -43,6 +43,7 @@
             <a
               class="btn btn-danger border-0 d-flex flex-column w-100"
               [routerLink]="['/control-panel', 'home']"
+              (click)="delete(user._id)"
             >
               <li class="fa-solid fa-trash-can"></li>
               <small class="fs-18">Borrar</small>

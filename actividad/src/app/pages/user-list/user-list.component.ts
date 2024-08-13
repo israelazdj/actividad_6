@@ -36,6 +36,8 @@ export class UserListComponent {
       }  
   }
 
+  delete(id:string | undefined){}
+
 
   /* async ngOnInit(){ */
     //observable revuelve los usuarios
