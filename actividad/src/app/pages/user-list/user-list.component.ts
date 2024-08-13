@@ -36,7 +36,7 @@ export class UserListComponent {
       }  
   }
 
-  delete(){}
+  delete(id:string | undefined){}
 
 
   /* async ngOnInit(){ */
