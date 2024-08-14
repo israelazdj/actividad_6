@@ -54,7 +54,7 @@
           <div class="flex-fill">
             <a
               class="btn btn-danger border-0 d-flex flex-column w-100"
-              [routerLink]="['/control-panel', 'home']"
+              (click)="delete(usuario?._id)"
             >
               <li class="fa-solid fa-trash-can"></li>
               <small class="fs-18">Borrar</small>

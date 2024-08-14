@@ -14,9 +14,11 @@ import { firstValueFrom } from 'rxjs';
 })
 export class UserListComponent {
   //@Input() listausuarios: User[] = []
+  
 
   userServices = inject(UsuariosService);
   arruser: User[] = []
+  erroru: [] = []
 
   async ngOnInit(){
     try{
@@ -36,7 +38,35 @@ export class UserListComponent {
       }  
   }
 
-  delete(id:string | undefined){}
+  async delete(id:string | undefined){
+    if(id){
+      let borrar= confirm('estas seguro que quieres borrar el empleado' + id)
+      if(borrar)
+      {
+        try{
+        const response: User = await firstValueFrom(this.userServices.delete(id))
+        console.log(response)
+        if(response._id)
+        {
+          const response = await firstValueFrom(this.userServices.getAll())
+
+          this.arruser = response.results;
+          alert('Empleado borrado correctamente')
+
+        }
+      }
+      catch (error) {
+        console.log(error)
+        /* this.erroru = error
+        console.log(this.erroru) */
+      }
+      }
+
+    }
+
+
+
+  }
 
 
   /* async ngOnInit(){ */
