@@ -14,6 +14,7 @@ import { firstValueFrom } from 'rxjs';
 })
 export class UserListComponent {
   //@Input() listausuarios: User[] = []
+  
 
   userServices = inject(UsuariosService);
   arruser: User[] = []
