@@ -28,16 +28,16 @@ export class FormComponent {
       nombre: new FormControl(null,[
         Validators.required,
         Validators.minLength(3),
-        Validators.pattern(/^[A-Za-z\s\xF1\xD1]+$/)
+        Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/)
       ]),
       apellido: new FormControl(null,[
         Validators.required,
         Validators.minLength(3),
-        Validators.pattern(/^[A-Za-z\s\xF1\xD1]+$/)
+        Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/)
       ]),
       email: new FormControl(null,[
         Validators.required,
-        Validators.pattern(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/)
+        Validators.pattern(/^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/)
       ]),
       imagen: new FormControl(null,[
         Validators.required,
@@ -65,16 +65,16 @@ export class FormComponent {
           nombre: new FormControl(usuario.first_name,[
             Validators.required,
             Validators.minLength(3),
-            Validators.pattern(/^[A-Za-z\s\xF1\xD1]+$/)
+            Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/)
           ]),
           apellido: new FormControl(usuario.last_name,[
             Validators.required,
           Validators.minLength(3),
-          Validators.pattern(/^[A-Za-z\s\xF1\xD1]+$/)
+          Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/)
           ]),
           email: new FormControl(usuario.email,[
             Validators.required,
-          Validators.pattern(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/)
+          Validators.pattern(/^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/)
           ]),
           imagen: new FormControl(usuario.image,[
             Validators.required,
@@ -98,7 +98,7 @@ export class FormComponent {
       //actualizar
       try{
         const response: User = await firstValueFrom(this.usuarioService.update(this.usuarioform.value))        
-        //console.log('response 1'+response)
+        console.log(response._id)
         if(response._id)
         {
           alert('Usuario actualizado');
@@ -110,13 +110,16 @@ export class FormComponent {
     }
     }
     else{
+      console.log(this.usuarioform.value._id)
       //insertando
       //peticion al servicio para insertar los datos en la API
       try{
       const response: User = await firstValueFrom(this.usuarioService.insert(this.usuarioform.value))
       
+      let _id = response.id
       console.log(response)
-      if(response._id)
+      console.log(_id)
+      if(_id)
         {
           alert('Usuario insertado');
          this.router.navigate(['/control-panel', 'home'])          
