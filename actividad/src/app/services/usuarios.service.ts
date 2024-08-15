@@ -22,10 +22,15 @@ export class UsuariosService {
    * 
    *  */
 
-  getAll():Observable<Objeto>{
-    return this.http.get<Objeto>(this.baseurl)
+  getAll(page:number = 1):Observable<Objeto>{
+    return this.http.get<Objeto>(`${this.baseurl}?page=${page}`)
   }
+  /* getAll(page:number):Observable<Objeto>{
+    return this.http.get<Objeto>(`${this.baseurl}?page=${page}`)
+  } */
 
+
+  
   /* getAlll():Promise<Objeto>{
     return this.http.get<Objeto>(this.baseurl)
   } */

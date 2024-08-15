@@ -53,5 +53,21 @@
       </div>
       }
     </div>
+    <div>
+      <!-- 
+      <button (click)="gotoPage(1)">Previous</button>
+      <button (click)="gotoPage(2)">Next</button>
+       -->
+      <pagination-template>
+        <button class="btn border-0" [disabled]="currentPage === 1">
+          Previous
+        </button>
+        <button class="btn border-0" (click)="gotoPage(1)">1</button>
+        <button class="btn border-0" (click)="gotoPage(2)">2</button>
+        <button class="btn border-0" [disabled]="currentPage === 2">
+          Previous
+        </button>
+      </pagination-template>
+    </div>
   </div>
 </section>
