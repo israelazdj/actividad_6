@@ -48,10 +48,10 @@ export class UserListComponent {
       }  
   }
 
+}
 
-
-
-  async delete(id:string | undefined){
+/* 
+   async delete(id:string | undefined){
     if(id){
       let borrar= confirm('estas seguro que quieres borrar el empleado' + id)
       if(borrar)
@@ -70,8 +70,8 @@ export class UserListComponent {
       }
       catch (error) {
         console.log(error)
-        /* this.erroru = error
-        console.log(this.erroru) */
+         this.erroru = error
+        console.log(this.erroru) 
       }
       }
 
@@ -79,16 +79,16 @@ export class UserListComponent {
 
 
 
-  }
+  } */
 
-
-  /* async ngOnInit(){ */
+/* 
+   async ngOnInit(){ 
     //observable revuelve los usuarios
-    /* this.userServices.getAlll().subscribe((data: Objeto)=>{
+    this.userServices.getAlll().subscribe((data: Objeto)=>{
       this.arruser = data.results
       console.log(this.arruser)
-    }) */
-   /*  try{
+    }) 
+    try{
       const respuesta = await this.userServices.getAll()
   
       this.arruser = respuesta.results
@@ -97,6 +97,5 @@ export class UserListComponent {
       catch(error)
       {
         console.log(error)
-      }   */
-  
-}
+      } 
+  */
