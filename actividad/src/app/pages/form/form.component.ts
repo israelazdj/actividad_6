@@ -3,7 +3,8 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { UsuariosService } from '../../services/usuarios.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { User } from '../../interfaces/objeto.interface';
-import { firstValueFrom, lastValueFrom } from 'rxjs';
+import { firstValueFrom, from, lastValueFrom } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-form',
@@ -119,6 +120,14 @@ export class FormComponent {
       let _id = response.id
       console.log(response)
       console.log(_id)
+      console.log(response._id)
+      /* agregar la alerta */
+      /* Swal.fire({
+        _id: response._id,
+        text: response.msg,
+        icon: response.icon,
+        confirmButtonText: 'Aceptar'
+      }) */
       if(_id)
         {
           alert('Usuario insertado');

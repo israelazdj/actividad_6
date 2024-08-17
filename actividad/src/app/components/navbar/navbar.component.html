@@ -2,6 +2,21 @@
   class="navbar navbar-expand-lg bg-dark navbar-dark p-3 border-4 border-bottom border-danger shadow mb-2"
 >
   <div class="container">
+    <div class="img-fluid ms-2">
+      <a
+        class="nav-link active"
+        aria-current="page"
+        RouterLinkActive="active"
+        [routerLink]="['/control-panel', 'home']"
+      >
+        <img
+          src="./descarga.png"
+          class="card-img rounded-circle"
+          style="max-width: 50px"
+        />
+      </a>
+    </div>
+
     <button
       class="navbar-toggler"
       type="button"
@@ -21,7 +36,7 @@
             aria-current="page"
             RouterLinkActive="active"
             [routerLink]="['/control-panel', 'home']"
-            >Lista de usuarios</a
+            >Home</a
           >
         </li>
         <li class="nav-item">
