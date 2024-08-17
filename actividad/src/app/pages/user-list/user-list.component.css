@@ -2,13 +2,15 @@
     .col-pro{
         display: flex;
         height:auto;
+        
     }
 }
-@media(min-width: 600px){
+@media(min-width: 500px){
     .col-pro{
         display: flex;
-       
-        max-width: 33.3%;
+        column-gap: 2px;
+        max-width: 50%;
+        margin-bottom: 1rem;
     }
 }
 @media(min-width: 1000px){
