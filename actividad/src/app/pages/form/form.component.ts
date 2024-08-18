@@ -102,8 +102,25 @@ export class FormComponent {
         console.log(response._id)
         if(response._id)
         {
+          Swal.fire({
+            title: "Deseas guardar los cambios?",
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: "Guardar",
+            denyButtonText: `No guardar`
+          }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+              Swal.fire("Guardado!", "", "success");
+              this.router.navigate(['/control-panel', 'home'])
+            } else if (result.isDenied) {
+              Swal.fire("Los cambios no se guardaron", "", "info");
+              this.router.navigate(['/control-panel', 'home'])
+            }
+          });
+/* 
           alert('Usuario actualizado');
-            this.router.navigate(['/control-panel', 'home'])          
+            this.router.navigate(['/control-panel', 'home'])    */       
         }
     } catch ({ error }: any) {
       this.errorform = error
@@ -118,19 +135,14 @@ export class FormComponent {
       const response: User = await firstValueFrom(this.usuarioService.insert(this.usuarioform.value))
       
       let _id = response.id
-      console.log(response)
-      console.log(_id)
-      console.log(response._id)
-      /* agregar la alerta */
-      /* Swal.fire({
-        _id: response._id,
-        text: response.msg,
-        icon: response.icon,
-        confirmButtonText: 'Aceptar'
-      }) */
       if(_id)
         {
-          alert('Usuario insertado');
+          Swal.fire({
+            title: "Felicidades",
+            text: "Usuario insertado correctamente",
+            icon: "success",
+            confirmButtonText: 'Aceptar'
+          });
          this.router.navigate(['/control-panel', 'home'])          
         }
       }catch ({ error }: any) {
