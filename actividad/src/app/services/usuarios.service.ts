@@ -1,7 +1,10 @@
 import { inject, Injectable } from '@angular/core';
 import { Objeto, User } from '../interfaces/objeto.interface';
 import { HttpClient } from '@angular/common/http';
-import { firstValueFrom, lastValueFrom, Observable } from 'rxjs';
+import { firstValueFrom, lastValueFrom, map, Observable, of } from 'rxjs';
+import { SweetAlertIcon } from 'sweetalert2';
+
+type Response = { msg:string, title:string, icon:SweetAlertIcon}
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +17,7 @@ export class UsuariosService {
 
   private arrusers: User[] = []
 
+
   private http = inject(HttpClient)
 
   /**
@@ -25,33 +29,21 @@ export class UsuariosService {
   getAll(page:number = 1):Observable<Objeto>{
     return this.http.get<Objeto>(`${this.baseurl}?page=${page}`)
   }
-  /* getAll(page:number):Observable<Objeto>{
-    return this.http.get<Objeto>(`${this.baseurl}?page=${page}`)
-  } */
-
-
-  
-  /* getAlll():Promise<Objeto>{
-    return this.http.get<Objeto>(this.baseurl)
-  } */
   
   getById(id:string): Observable<User>{
-
-    return this.http.get<User>(`${this.baseurl}${id}`)
-  
+    return this.http.get<User>(`${this.baseurl}${id}`)  
   }
 
-  update(body:User): Observable<User>{
-    let id = body._id;
-    //esto sirve para eliminar de un objeto una clave con su valor    
-    return this.http.put<User>(`${this.baseurl}${id}`, body)
-    
-  }
+    update(body:User): Observable<User> {
+      let id = body._id;
+      //esto sirve para eliminar de un objeto una clave con su valor    
+      return this.http.put<User>(`${this.baseurl}${id}`, body)      
+    }
 
   insert(body:User): Observable<User>{
     return this.http.post<User>(this.baseurl,body)
   }
-
+    //delete
   delete(id:string): Observable<User>{
     return this.http.delete<User>(`${this.baseurl}${id}`)
     

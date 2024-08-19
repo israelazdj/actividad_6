@@ -1,4 +1,4 @@
-<section class="container mt-3">
+<section class="container mt-4">
   <div class="card shadow p-5">
     <h3>{{ variable }} Usuario</h3>
 
@@ -80,14 +80,10 @@
             [routerLink]="['/control-panel', 'home']"
             class="btn btn-secondary border-0"
           >
-            <i class="fa-solid fa-rotate-left"></i>
+            <i class="fa-sharp-duotone fa-solid fa-rotate-left"></i>
             <small class="fs-18">Volver</small>
           </a>
         </div>
-        <!-- <button type="submit" class="btn btn-info border-0 align-items-center">
-        <i class="fa-duotone fa-solid fa-floppy-disk"></i>
-        <small class="fs-18"> {{ variable }}</small>
-      </button> -->
       </div>
     </form>
     @for( error of errorform; track $index ){

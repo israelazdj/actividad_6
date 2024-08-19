@@ -3,7 +3,8 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { UsuariosService } from '../../services/usuarios.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { User } from '../../interfaces/objeto.interface';
-import { firstValueFrom, lastValueFrom } from 'rxjs';
+import { firstValueFrom, from, lastValueFrom } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-form',
@@ -101,8 +102,22 @@ export class FormComponent {
         console.log(response._id)
         if(response._id)
         {
-          alert('Usuario actualizado');
-            this.router.navigate(['/control-panel', 'home'])          
+          Swal.fire({
+            title: "Deseas guardar los cambios?",
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: "Guardar",
+            denyButtonText: `No guardar`
+          }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+              Swal.fire("Guardado!", "", "success");
+              this.router.navigate(['/control-panel', 'home'])
+            } else if (result.isDenied) {
+              Swal.fire("Los cambios no se guardaron", "", "info");
+              //this.router.navigate(['/control-panel', 'home'])
+            }
+          });   
         }
     } catch ({ error }: any) {
       this.errorform = error
@@ -110,19 +125,27 @@ export class FormComponent {
     }
     }
     else{
-      console.log(this.usuarioform.value._id)
-      //insertando
-      //peticion al servicio para insertar los datos en la API
+      //console.log(this.usuarioform.value._id)
       try{
+        
       const response: User = await firstValueFrom(this.usuarioService.insert(this.usuarioform.value))
       
       let _id = response.id
-      console.log(response)
-      console.log(_id)
+      //console.log(_id)
       if(_id)
         {
-          alert('Usuario insertado');
-         this.router.navigate(['/control-panel', 'home'])          
+          console.log(response)
+          Swal.fire({
+            title: "Felicidades",
+            text: "Usuario insertado correctamente",
+            icon: "success",
+            confirmButtonText: 'Aceptar'
+          }).then(result=>{
+            if (result.isConfirmed) {
+              this.router.navigate(['/control-panel', 'home'])  
+              }
+            });
+                 
         }
       }catch ({ error }: any) {
         this.errorform = error

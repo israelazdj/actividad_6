@@ -36,8 +36,6 @@ export class UserviewComponent {
       }
       catch (error) {
         console.log(error)
-        /* this.erroru = error
-        console.log(this.erroru) */
       }
       }
 

@@ -25,7 +25,7 @@ export class CardUserComponent {
       this.activeRoute.params.subscribe(async (params:any)=>{
         //console.log(params.id)
         let id= params.id
-        console.log(id)
+        //console.log(id)
         this.usuario = await firstValueFrom(this.userService.getById(id))
         console.log(this.usuario)
       })
@@ -58,8 +58,6 @@ export class CardUserComponent {
       }
       catch (error) {
         console.log(error)
-        /* this.erroru = error
-        console.log(this.erroru) */
       }
       }
       
