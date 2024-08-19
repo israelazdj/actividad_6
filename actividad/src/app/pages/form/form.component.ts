@@ -117,10 +117,7 @@ export class FormComponent {
               Swal.fire("Los cambios no se guardaron", "", "info");
               this.router.navigate(['/control-panel', 'home'])
             }
-          });
-/* 
-          alert('Usuario actualizado');
-            this.router.navigate(['/control-panel', 'home'])    */       
+          });   
         }
     } catch ({ error }: any) {
       this.errorform = error
@@ -128,15 +125,13 @@ export class FormComponent {
     }
     }
     else{
-      console.log(this.usuarioform.value._id)
-      //insertando
-      //peticion al servicio para insertar los datos en la API
+      //console.log(this.usuarioform.value._id)
       try{
         
       const response: User = await firstValueFrom(this.usuarioService.insert(this.usuarioform.value))
       
       let _id = response.id
-      console.log(_id)
+      //console.log(_id)
       if(_id)
         {
           console.log(response)
