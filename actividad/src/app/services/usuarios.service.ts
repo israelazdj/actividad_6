@@ -44,7 +44,6 @@ export class UsuariosService {
     return this.http.get<User>(`${this.baseurl}${id}`)
   
   }
-
   /* update(body:User): Observable<User>{
     let id = body._id;
     //esto sirve para eliminar de un objeto una clave con su valor    

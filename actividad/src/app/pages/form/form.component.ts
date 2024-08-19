@@ -132,12 +132,14 @@ export class FormComponent {
       //insertando
       //peticion al servicio para insertar los datos en la API
       try{
+        
       const response: User = await firstValueFrom(this.usuarioService.insert(this.usuarioform.value))
       
       let _id = response.id
       console.log(_id)
       if(_id)
         {
+          console.log(response)
           Swal.fire({
             title: "Felicidades",
             text: "Usuario insertado correctamente",

@@ -29,7 +29,7 @@ export class UserListComponent {
     this.arruser = response.results
   }
 
-  async ngOnInit(){
+  ngOnInit(){
     try{
       //observable devuelve los usuarios
      this.userServices.getAll().subscribe((data: Objeto)=>{
