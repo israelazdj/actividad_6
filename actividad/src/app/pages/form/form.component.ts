@@ -115,7 +115,7 @@ export class FormComponent {
               this.router.navigate(['/control-panel', 'home'])
             } else if (result.isDenied) {
               Swal.fire("Los cambios no se guardaron", "", "info");
-              this.router.navigate(['/control-panel', 'home'])
+              //this.router.navigate(['/control-panel', 'home'])
             }
           });   
         }
