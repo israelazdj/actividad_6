@@ -4,6 +4,7 @@ import { RouterLink } from '@angular/router';
 import { CardUserComponent } from '../card-user/card-user.component';
 import { UsuariosService } from '../../services/usuarios.service';
 import { firstValueFrom } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-userview',
@@ -17,8 +18,50 @@ export class UserviewComponent {
   userServices = inject(UsuariosService)
   arruser: User[]=[]
 
-  async delete(id:string | undefined){
+  delete(id:string | undefined) {
     if(id){
+
+      Swal.fire({
+        title: "Estas seguro?",
+        text: "No podras revertirlo!",
+        icon: "warning",
+        cancelButtonText:"Cancelar",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, borrar!"
+        
+      }).then(async(result)=>{
+        if (result.isConfirmed) {
+
+          try 
+          {
+            const response: User = await firstValueFrom(this.userServices.delete(id))
+            console.log(response)
+            Swal.fire({title: "Borrado!",text: "Usuario eliminado correctamente.",icon: "success"});
+              if(response._id)
+              {
+                const response = await firstValueFrom(this.userServices.getAll())
+      
+                this.arruser = response.results;
+                  //alert('Usuario borrado correctamente')
+        
+              }
+          }
+        
+        catch (error) {
+          console.log(error)
+        }
+        }
+      })
+    }
+  }
+
+
+
+}
+
+/* 
       let borrar= confirm('Estas seguro que quieres borrar el empleado: ' + id)
       if(borrar)
       {
@@ -39,10 +82,8 @@ export class UserviewComponent {
       }
       }
 
-    }
+    } */
 
 
 
   
-}
-}

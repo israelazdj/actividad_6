@@ -3,6 +3,7 @@ import { User } from '../../interfaces/objeto.interface';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { UsuariosService } from '../../services/usuarios.service';
 import { firstValueFrom, lastValueFrom } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-card-user',
@@ -39,32 +40,44 @@ export class CardUserComponent {
 
   async delete(id:string | undefined){
     if(id){
-      let borrar= confirm('Deseas Borrar al Usuario: ' + id)
-      if(borrar)
-      {
-        try{
-        const response: User = await firstValueFrom(this.userService.delete(id))
-        console.log(response)
-        if(response._id)
-        {
-          const response = await firstValueFrom(this.userService.getAll())
 
-          this.arruser = response.results;
-          this.router.navigate(['/control-panel', 'home']) 
-          alert('Empleado borrado correctamente')
-          
+      Swal.fire({
+        title: "Estas seguro?",
+        text: "No podras revertirlo!",
+        icon: "warning",
+        cancelButtonText:"Cancelar",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, borrar!"
+        
+      }).then(async(result)=>{
+        if (result.isConfirmed) {
 
-        }
-      }
-      catch (error) {
-        console.log(error)
-      }
-      }
+          try 
+          {
+            const response: User = await firstValueFrom(this.userService.delete(id))
+            console.log(response)
+            Swal.fire({title: "Borrado!",text: "Usuario eliminado correctamente.",icon: "success"});
+            
+              if(response._id)
+              {
+                const response = await firstValueFrom(this.userService.getAll())
       
+                this.arruser = response.results;
+                this.router.navigate(['/control-panel', 'home']) 
+                
+                  //alert('Usuario borrado correctamente')
+        
+              }
+          }
+        
+        catch (error) {
+          console.log(error)
+        }
+        }
+      })
     }
-
-
-
   }
 
 
