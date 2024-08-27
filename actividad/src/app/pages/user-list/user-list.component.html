@@ -1,6 +1,7 @@
-<section class="container mt-4">
+<section class="container mt-4 bg-dark">
   <div class="row">
     @for (user of arruser; track user.id) {
+
     <article class="col-pro">
       <app-userview [myuser]="user"></app-userview>
     </article>
@@ -8,12 +9,10 @@
   </div>
   <div class="justify-content-center d-flex p-4 m-4" style="height: 50px">
     <pagination-template>
-      <button class="btn border-0" [disabled]="currentPage === 1">
-        Previous
-      </button>
+      <button class="btn border-0" (click)="gotoPage(2)">Previous</button>
       <button class="btn border-0" (click)="gotoPage(1)">1</button>
       <button class="btn border-0" (click)="gotoPage(2)">2</button>
-      <button class="btn border-0" [disabled]="currentPage === 2">Next</button>
+      <button class="btn border-0" (click)="gotoPage(1)">Next</button>
     </pagination-template>
   </div>
 </section>

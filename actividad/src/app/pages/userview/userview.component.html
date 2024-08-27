@@ -1,9 +1,13 @@
-<div class="card shadow h-100 justify-content-between p-4">
+<div class="card h-100 justify-content-between p-4 borde">
   <div class="text-center flex-wrap">
-    <div class="d-flex">
-      <img class="img-fluid rounded-circle" [src]="myuser.image" />
+    <div class="d-flex justify-content-center">
+      <img
+        class="img-fluid rounded-circle img"
+        style="width: 70%"
+        [src]="myuser.image"
+      />
     </div>
-    <p class="fs-5">{{ myuser.first_name }} {{ myuser.last_name }}</p>
+    <p class="fs-5 m-2">{{ myuser.first_name }} {{ myuser.last_name }}</p>
   </div>
 
   <div class="d-flex flex-wrap gap-1">

@@ -6,3 +6,19 @@
         
     }
 }
+img{
+    transition: 0.3s;
+    object-fit:cover;
+}
+img:hover{
+    transform:scale(1.1);
+}
+
+.efecto{
+    transition: 0.3s;
+    object-fit:cover;
+}
+.efecto:hover{
+    transform:scale(1.1);
+    box-shadow: 0px 4px 4px 4px #c5c8d3;
+}
