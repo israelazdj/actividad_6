@@ -15,7 +15,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 })
 export class UserListComponent {
   //@Input() listausuarios: User[] = []
-  page!: number;
+  page: number= 1;
   currentPage: number = 1
   totalPage: number= 2
 
@@ -24,17 +24,41 @@ export class UserListComponent {
   erroru: [] = []
 
 
-  async gotoPage(page: number){
-    const response = await firstValueFrom(this.userServices.getAll(page) )
+  async filtro(){
+    const response = await firstValueFrom(this.userServices.getAll(this.page) )
+    //console.log(response.results)
     this.arruser = response.results
   }
 
+  async previPage(){
+    if(this.page <= 1)
+    {
+      this.page = this.totalPage;
+      await this.filtro();      
+    }
+    else{      
+      this.page -= 1;      
+    }
+    await this.filtro(); 
+  }
+
+  async nextPage(){
+    if(this.page < this.totalPage)
+    {
+      this.page += 1
+    }
+    else{
+      this.page = 1
+    }
+    await this.filtro();
+  }
+  
   async ngOnInit(){
     try{
       this.userServices.getAll().subscribe((data: Objeto)=>{
       
       this.arruser = data.results
-      console.log(this.arruser)
+      //console.log(this.arruser)
       })      
     } 
       catch(error)

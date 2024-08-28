@@ -19,5 +19,5 @@ export const routes: Routes = [
         {path:"actualizar-usuario/:id", component:FormComponent}
     ]},
     
-    //{path:"**",redirectTo:"home"}
+    //{path:"**",component:ControlPanelComponent}
 ];
