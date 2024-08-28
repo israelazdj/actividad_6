@@ -7,12 +7,27 @@
     </article>
     }
   </div>
-  <div class="justify-content-center d-flex p-4 m-4" style="height: 50px">
+  <div class="justify-content-center d-flex p-4" style="height: 50px">
     <pagination-template>
-      <button class="btn border-0" (click)="gotoPage(2)">Previous</button>
-      <button class="btn border-0" (click)="gotoPage(1)">1</button>
-      <button class="btn border-0" (click)="gotoPage(2)">2</button>
-      <button class="btn border-0" (click)="gotoPage(1)">Next</button>
+      <button class="btn btn-light me-2" (click)="previPage()">
+        << Previous
+      </button>
+      <button
+        class="btn btn-light me-2"
+        (click)="previPage()"
+        [disabled]="page <= 1"
+      >
+        1
+      </button>
+      <button
+        class="btn btn-light me-2"
+        (click)="nextPage()"
+        [disabled]="page >= 2"
+      >
+        2
+      </button>
+
+      <button class="btn btn-light ms-2" (click)="nextPage()">Next >></button>
     </pagination-template>
   </div>
 </section>
