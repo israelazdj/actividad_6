@@ -109,13 +109,11 @@ export class FormComponent {
             confirmButtonText: "Guardar",
             denyButtonText: `No guardar`
           }).then((result) => {
-            /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
               Swal.fire("Guardado!", "", "success");
               this.router.navigate(['/control-panel', 'home'])
             } else if (result.isDenied) {
               Swal.fire("Los cambios no se guardaron", "", "info");
-              //this.router.navigate(['/control-panel', 'home'])
             }
           });   
         }
@@ -125,7 +123,6 @@ export class FormComponent {
     }
     }
     else{
-      //console.log(this.usuarioform.value._id)
       try{
         
       const response: User = await firstValueFrom(this.usuarioService.insert(this.usuarioform.value))

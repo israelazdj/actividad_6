@@ -16,11 +16,6 @@ export class UsuariosService {
 
   private http = inject(HttpClient)
 
-  /**
-   * GETALL()
-   * return Observable<Objeto>
-   * 
-   *  */
 
   getAll(page:number = 1):Observable<Objeto>{
     return this.http.get<Objeto>(`${this.baseurl}?page=${page}`)
@@ -33,8 +28,7 @@ export class UsuariosService {
   }
 
   update(body:User): Observable<User>{
-    let id = body._id;
-    //esto sirve para eliminar de un objeto una clave con su valor    
+    let id = body._id;  
     return this.http.put<User>(`${this.baseurl}${id}`, body)
     
   }

@@ -37,14 +37,13 @@ export class UserviewComponent {
           try 
           {
             const response: User = await firstValueFrom(this.userServices.delete(id))
-            console.log(response)
+            //console.log(response)
             Swal.fire({title: "Borrado!",text: "Usuario eliminado correctamente.",icon: "success"});
               if(response._id)
               {
                 const response = await firstValueFrom(this.userServices.getAll())
       
                 this.arruser = response.results;
-                  //alert('Usuario borrado correctamente')
         
               }
           }
@@ -60,29 +59,6 @@ export class UserviewComponent {
 
 
 }
-
-/* 
-      let borrar= confirm('Estas seguro que quieres borrar el empleado: ' + id)
-      if(borrar)
-      {
-        try{
-        const response: User = await firstValueFrom(this.userServices.delete(id))
-        console.log(response)
-        if(response._id)
-        {
-          const response = await firstValueFrom(this.userServices.getAll())
-
-          this.arruser = response.results;
-          alert('Usuario borrado correctamente')
-
-        }
-      }
-      catch (error) {
-        console.log(error)
-      }
-      }
-
-    } */
 
 
 

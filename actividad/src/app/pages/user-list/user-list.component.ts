@@ -14,7 +14,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
   styleUrl: './user-list.component.css'
 })
 export class UserListComponent {
-  //@Input() listausuarios: User[] = []
   page: number= 1;
   currentPage: number = 1
   totalPage: number= 2

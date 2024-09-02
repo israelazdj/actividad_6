@@ -67,7 +67,6 @@ export class CardUserComponent {
                 this.arruser = response.results;
                 this.router.navigate(['/control-panel', 'home']) 
                 
-                  //alert('Usuario borrado correctamente')
         
               }
           }

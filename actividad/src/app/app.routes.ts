@@ -7,17 +7,15 @@ import { CardUserComponent } from './pages/card-user/card-user.component';
 
 export const routes: Routes = [
 
-     {path:"", pathMatch:"full",redirectTo:"control-panel"}, 
-    //{path:"home",component:UserListComponent},
-    /* {path:'home', component: UserListComponent},
-    {path: "user", component: UserviewComponent}, */
+     {path:"", pathMatch:"full",redirectTo:"control-panel"},
     {path:"control-panel",component:ControlPanelComponent , children: [
         {path:"",pathMatch: 'full',redirectTo: 'home'},
         {path:"users/:id",component:CardUserComponent},
         {path:"home", component:UserListComponent},
         {path:"new", component:FormComponent},
-        {path:"actualizar-usuario/:id", component:FormComponent}
+        {path:"actualizar-usuario/:id", component:FormComponent},
+        {path:"**",redirectTo:'home'}
     ]},
     
-    //{path:"**",component:ControlPanelComponent}
+    {path:"**",redirectTo:"control-panel/home"}
 ];
