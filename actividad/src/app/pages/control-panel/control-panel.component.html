@@ -1,1 +1,12 @@
-<p>control-panel works!</p>
+<div class="d-flex flex-column vh-100">
+  <header class="flex-grow-0">
+    <app-navbar></app-navbar>
+  </header>
+
+  <main class="flex-grow-1">
+    <router-outlet></router-outlet>
+  </main>
+  <footer class="flex-grow-0">
+    <app-footer></app-footer>
+  </footer>
+</div>

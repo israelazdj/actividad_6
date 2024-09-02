@@ -1,0 +1,21 @@
+@media(min-width: 280px){
+    .col-pro{
+        display: flex;
+        margin-bottom: 1rem;
+        
+    }
+}
+@media(min-width: 500px){
+    .col-pro{
+        display: flex;
+        max-width: 50%;
+        margin-bottom: 1rem;
+    }
+}
+@media(min-width: 1000px){
+    .col-pro{
+        display: flex;
+        max-width: 25%;
+        margin-bottom: 1rem;
+    }
+}

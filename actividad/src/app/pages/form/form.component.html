@@ -1,1 +1,93 @@
-<p>form works!</p>
+<section class="container mt-4 mb-4">
+  <div class="card p-5 efecto">
+    <h3>{{ variable }} Usuario</h3>
+
+    <form [formGroup]="usuarioform" (ngSubmit)="getDataForm()">
+      <div class="my-3">
+        <label class="form-label" for="nombre">Nombre</label>
+        <input
+          class="form-control"
+          type="text"
+          id="nombre"
+          formControlName="nombre"
+          placeholder="Introduce el Nombre"
+        />
+        @if(checkControl('nombre','required')){
+        <p class="text-danger">El campo es requerido</p>
+        } @if(checkControl('nombre','minlength')){
+        <p class="text-danger">
+          La longitud minima de un nombre tiene que ser 3 caracteres
+        </p>
+        } @if(checkControl('nombre','pattern')){
+        <p class="text-danger">Solo se admiten letras [A-Z]</p>
+        }
+      </div>
+      <div class="my-3">
+        <label class="form-label" for="apellido">Apellido</label>
+        <input
+          class="form-control"
+          type="text"
+          id="apellido"
+          formControlName="apellido"
+          placeholder="Introduce el Apellido"
+        />
+        @if(checkControl('apellido','required')){
+        <p class="text-danger">El campo es requerido</p>
+        } @if(checkControl('apellido','minlength')){
+        <p class="text-danger">
+          La longitud minima del apellido es minimo 3 caracteres
+        </p>
+        } @if(checkControl('apellido','pattern')){
+        <p class="text-danger">Solo se admiten letras [A-Z]</p>
+        }
+      </div>
+      <div class="my-3">
+        <label class="form-label" for="email">Email</label>
+        <input
+          class="form-control"
+          type="email"
+          id="email"
+          formControlName="email"
+          placeholder="Introduce el Email"
+        />
+        @if(checkControl('email', 'pattern')){
+        <p class="text-danger">El email es incorrecto</p>
+        } @if(checkControl('email', 'required')){
+        <p class="text-danger">El email es obligatorio</p>
+        }
+      </div>
+      <div class="my-3">
+        <label class="form-label" for="imagen">Imagen</label>
+        <input
+          class="form-control"
+          type="text"
+          id="imagen"
+          formControlName="imagen"
+          placeholder="Introduce el Url:/Imagen"
+        />
+        @if(checkControl('imagen', 'pattern')){
+        <p class="text-danger">El Url es incorrecto</p>
+        } @if(checkControl('imagen', 'required')){
+        <p class="text-danger">El Url es obligatorio</p>
+        }
+      </div>
+      <div class="d-flex flex- gap-1">
+        <div class="my-3">
+          <input type="submit" [value]="variable" class="btn btn-danger" />
+        </div>
+        <div class="my-3">
+          <a
+            [routerLink]="['/control-panel', 'home']"
+            class="btn btn-secondary border-0"
+          >
+            <i class="fa-sharp-duotone fa-solid fa-rotate-left"></i>
+            <small class="fs-18">Volver</small>
+          </a>
+        </div>
+      </div>
+    </form>
+    @for( error of errorform; track $index ){
+    <p class="text-danger">{{ error.field }}: {{ error.message }}</p>
+    }
+  </div>
+</section>

@@ -1,1 +1,53 @@
-<p>navbar works!</p>
+<nav
+  class="navbar navbar-expand-lg bg-dark navbar-dark p-3 border-4 border-bottom border-danger shadow h-100"
+>
+  <div class="container">
+    <div class="img-fluid ms-2">
+      <a
+        class="nav-link active"
+        aria-current="page"
+        RouterLinkActive="active"
+        [routerLink]="['/control-panel', 'home']"
+      >
+        <img
+          src="./descarga.png"
+          class="card-img rounded-circle"
+          style="max-width: 50px"
+        />
+      </a>
+    </div>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            RouterLinkActive="active"
+            [routerLink]="['/control-panel', 'home']"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            RouterLinkActive="active"
+            [routerLink]="['/control-panel', 'new']"
+            >Nuevo Usuario</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

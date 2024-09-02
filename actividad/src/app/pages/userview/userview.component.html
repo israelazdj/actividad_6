@@ -1,38 +1,43 @@
-<section class="container h-100">
-  <div class="card shadow h-100 justify-content-between p-2">
-    <div class="text-center flex-wrap w-100">
-      <div class="d-flex">
-        <img class="img-fluid rounded-circle" [src]="myuser.image" />
-      </div>
-      <p class="fs-5">{{ myuser.first_name }} {{ myuser.last_name }}</p>
+<div class="card h-100 justify-content-between p-4 borde">
+  <div class="text-center flex-wrap">
+    <div class="d-flex justify-content-center">
+      <img
+        class="img-fluid rounded-circle img"
+        style="width: 70%"
+        [src]="myuser.image"
+      />
     </div>
+    <p class="fs-5 m-2">{{ myuser.first_name }} {{ myuser.last_name }}</p>
+  </div>
 
-    <div class="d-flex flex-wrap gap-1">
-      <div class="flex-fill">
-        <a [routerLink]="['user', myuser.id]" class="btn btn-warning"
-          >Ver detalles</a
-        >
-        <!-- <a
-            class="btn btn-secondary d-flex flex-column w-100 border-0"
-            [routerLink]="['user', myuser.id]"
-            class="btn btn-warning"
-          >
-            <li class="fa-duotone fa-solid fa-magnifying-glass"></li>
-            Ver detalles
-          </a> -->
-      </div>
-      <div class="flex-fill">
-        <a class="btn btn-secondary border-0 d-flex flex-column w-100">
-          <li class="fa-solid fa-arrows-rotate"></li>
-          <small class="fs-18">Actualizar</small>
-        </a>
-      </div>
-      <div class="flex-fill">
-        <a class="btn btn-secondary border-0 d-flex flex-column w-100">
-          <li class="fa-solid fa-trash-can"></li>
-          <small class="fs-18">Borrar</small>
-        </a>
-      </div>
+  <div class="d-flex flex-wrap gap-1">
+    <div class="flex-fill">
+      <a
+        [routerLink]="['/control-panel', 'users', myuser._id]"
+        class="btn btn-secondary border-0 d-flex flex-column w-100"
+      >
+        <li class="fa-duotone fa-solid fa-magnifying-glass"></li>
+        <small class="fs-18">Ver detalles</small>
+      </a>
+    </div>
+    <div class="flex-fill">
+      <a
+        class="btn btn-info border-0 d-flex flex-column w-100"
+        [routerLink]="['/control-panel', 'actualizar-usuario', myuser._id]"
+      >
+        <li class="fa-solid fa-arrows-rotate"></li>
+        <small class="fs-18">Actualizar</small>
+      </a>
+    </div>
+    <div class="flex-fill">
+      <a
+        class="btn btn-danger border-0 d-flex flex-column w-100"
+        [routerLink]="['/control-panel', 'home']"
+        (click)="delete(myuser._id)"
+      >
+        <li class="fa-solid fa-trash-can"></li>
+        <small class="fs-18">Borrar</small>
+      </a>
     </div>
   </div>
-</section>
+</div>
