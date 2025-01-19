@@ -1,4 +1,4 @@
 # actividad_6
-[[https://lovely-llama-b41221.netlify.app/control-panel/home](https://actividad6-crud.netlify.app/control-panel/home)](https://actividad6-crud.netlify.app/control-panel/home)
+[[[[https://lovely-llama-b41221.netlify.app/control-panel/home](https://actividad6-crud.netlify.app/control-panel/home)](https://actividad6-crud.netlify.app/control-panel/home)](https://todoapp-vite-practica.netlify.app)](https://actividad6-crud.netlify.app)
 
 nota: La api es de pruebas luego la respuesta que ofrece sobre todo al tema de crear y actualizar están mockeadas. La creación de usuarios no generará usuarios nuevos, pero si te devolverá el usuario con su id creado.
